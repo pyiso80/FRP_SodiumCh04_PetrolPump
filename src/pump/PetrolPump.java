@@ -92,13 +92,14 @@ class PumpFace extends Component {
         })).append(nozzle3.listen(ud -> {
             this.repaint(0);
         }));
-        background = ImageIO.read(new URL(rootURL, "../images/petrol-pump-front.png"));
+        //fixed for loading resources
+        background = ImageIO.read(PetrolPump.class.getResource("/images/petrol-pump-front.png"));
         for (int i = 0; i < 8; i++) {
-            smalls[i] = ImageIO.read(new URL(rootURL, "../images/small"+i+".png"));
-            larges[i] = ImageIO.read(new URL(rootURL, "../images/large"+i+".png"));
+            smalls[i] = ImageIO.read(PetrolPump.class.getResource("/images/small"+i+".png"));
+            larges[i] = ImageIO.read(PetrolPump.class.getResource("/images/large"+i+".png"));
         }
         for (int i = 0; i < 3; i++) {
-            nozzleImgs[i] = ImageIO.read(new URL(rootURL, "../images/nozzle"+(i+1)+".png"));
+            nozzleImgs[i] = ImageIO.read(PetrolPump.class.getResource("/images/nozzle"+(i+1)+".png"));
             final int x = 270 + i*130;
             final int width = nozzleImgs[i].getWidth(null);
             final int height = nozzleImgs[i].getHeight(null);
@@ -327,14 +328,15 @@ public class PetrolPump extends JFrame
                 Stream<Unit> sBeep = Cell.switchS(outputs.map(o -> o.sBeep));
                 Stream<Sale> sSaleComplete = Cell.switchS(outputs.map(o -> o.sSaleComplete));
 
-                AudioClip beepClip = Applet.newAudioClip(new URL(rootURL, "../sounds/beep.wav"));
+                //fixed for loading resources
+                AudioClip beepClip = Applet.newAudioClip(PetrolPump.class.getResource("/sounds/beep.wav"));
                 l = l.append(sBeep.listen(u -> {
                     System.out.println("BEEP!");
                     beepClip.play();
                 }));
 
-                AudioClip fastRumble = Applet.newAudioClip(new URL(rootURL, "../sounds/fast.wav"));
-                AudioClip slowRumble = Applet.newAudioClip(new URL(rootURL, "../sounds/slow.wav"));
+                AudioClip fastRumble = Applet.newAudioClip(PetrolPump.class.getResource("/sounds/fast.wav"));
+                AudioClip slowRumble = Applet.newAudioClip(PetrolPump.class.getResource("/sounds/slow.wav"));
 
                 l = l.append(changes(delivery).listen(d -> {
                     switch (d) {
