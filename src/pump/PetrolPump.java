@@ -1,33 +1,23 @@
 package pump;
 
+import nz.sodium.*;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.imageio.*;
 import java.applet.Applet;
 import java.applet.AudioClip;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
-import java.awt.event.MouseMotionAdapter;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.GridLayout;
-import java.awt.Point;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.awt.image.*;
-import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Optional;
 import java.util.List;
-import nz.sodium.*;
+import java.util.Optional;
 
 
 class PumpFace extends Component {
